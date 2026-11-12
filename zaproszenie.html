@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mały plan</title>
+<style>
+:root{--bg:#f5f0e8;--card:#fffcf7;--ink:#35302b;--muted:#81786e;--accent:#777d65;--line:#e5ded3}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,sans-serif;min-height:100svh;display:grid;place-items:center;padding:24px}main{width:min(100%,520px);background:var(--card);border:1px solid #ffffffa0;border-radius:28px;padding:clamp(24px,6vw,44px);box-shadow:0 20px 70px #5046310b}section[hidden],[hidden]{display:none!important}section{animation:appear .3s ease} @keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.eyebrow{font-size:10px;letter-spacing:2px;color:var(--accent);font-weight:750}.progress{display:flex;gap:6px;margin:20px 0 32px}.progress span{height:4px;flex:1;border-radius:9px;background:var(--line)}.progress span.active{background:var(--accent)}h1{font-size:clamp(26px,6vw,34px);line-height:1.15;letter-spacing:-1px;margin:0 0 16px}p{color:var(--muted);line-height:1.65;margin:0 0 24px}label{display:block;font-size:13px;margin:18px 0 8px}input,textarea,button{font:inherit}input,textarea{width:100%;border:1px solid var(--line);border-radius:16px;padding:15px;background:#fffdf9;color:var(--ink)}textarea{resize:vertical;min-height:110px}input:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:2px}button{border:0;border-radius:16px;padding:15px 20px;cursor:pointer;transition:background .2s,transform .2s}button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}button:disabled{opacity:.55;cursor:wait}.primary{background:var(--accent);color:white;width:100%;margin-top:24px;font-weight:600}.primary:hover{background:#656c55}.secondary{background:#ece7de;color:var(--ink)}.back{background:none;color:var(--muted);padding:12px 0;font-size:13px;display:block;margin-top:12px}.options{display:grid;gap:12px}.choice{text-align:left;background:#f6f2eb;border:2px solid transparent;padding:19px;border-radius:20px;width:100%;color:var(--ink)}.choice[aria-pressed=true]{border-color:var(--accent);background:#eceee4}.choice strong{display:block;font-size:16px;font-weight:600}.choice small{display:block;color:var(--muted);font-size:13px;margin-top:7px;line-height:1.5}.arena{height:170px;position:relative;background:#f7f3ed;border-radius:20px;margin:22px 0 12px}.arena button{position:absolute;max-width:calc(100% - 16px)}#yes{left:12px;top:12px;background:var(--accent);color:white}#no{right:12px;bottom:12px}.hint{font-size:13px;min-height:24px;margin-bottom:0}.check{display:flex;align-items:center;gap:10px;margin:16px 0}.check input{width:18px;height:18px;accent-color:var(--accent)}.summary{background:#f5f1e9;border-radius:20px;padding:20px;overflow-wrap:anywhere}.summary div+div{margin-top:16px}.summary small{display:block;color:var(--muted);margin-bottom:5px}.summary span{white-space:pre-wrap}.notice{font-size:12px;line-height:1.6;color:var(--muted);margin:18px 0 0}.error{color:#935440;font-size:13px;margin:16px 0 0}.footer{text-align:center;font-size:11px;color:#a1988c;margin-top:25px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+
+<body>
+<main>
+<div class="eyebrow">MAŁY PLAN · DUŻO FORMALNOŚCI</div>
+<div class="progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+<form id="invite">
+
+<section data-step="0">
+    <h1 tabindex="-1">Hejka, zaloguj się 🫠</h1><p>Spokojnie, to nie kolejny portal, do którego zapomnisz hasła.</p>
+    <label for="name">Jak ci na imię?</label><input id="name" name="imie" autocomplete="given-name" maxlength="80" placeholder="...">
+    <button type="button" class="primary" id="enter">Wchodzę</button>
+</section>
+
+<section data-step="1" hidden>
+    <h1 tabindex="-1">Czy na pewno ty to ty?</h1><p>Musimy wykluczyć, że ktoś podszywa się pod ciebie, żeby przejąć zaproszenie.</p>
+    <div class="arena" id="arena"><button type="button" id="yes">Tak, to ja</button><button type="button" class="secondary" id="no">Nie, ktoś inny</button></div>
+    <p class="hint" id="hint" aria-live="polite">Kontrola rutynowa. Proszę zachować powagę.</p>
+    <button type="button" class="back" data-back="0">Wróć</button>
+</section>
+
+<section data-step="2" hidden>
+    <h1 tabindex="-1">To co robimy?</h1><p>Tożsamość potwierdzona. Trochę na słowo honoru, ale niech będzie.</p>
+    <div class="options" role="group" aria-label="Wybierz plan">
+        <button type="button" class="choice" data-plan="Wyjście w góry" aria-pressed="false"><strong>Wyjście w góry🏔️</strong><small>Widoki gwarantowane. Kondycja do ustalenia.</small></button>
+        <button type="button" class="choice" data-plan="Wspólna kolacja" aria-pressed="false"><strong>Wspólna kolacja🍕</strong><small>Najpierw ustalimy, gdzie jemy.</small></button>
+        <button type="button" class="choice" data-plan="Kręgle" aria-pressed="false"><strong>Kręgle🎳</strong><small>Wspaniałe ćwiczenia dla refleksu albo trochę podniesienie swoich umiejętności XD.</small></button>
+        <button type="button" class="choice" data-plan="Inna opcja" aria-pressed="false"><strong>Mam lepszy pomysł😎</strong><small>Taa? No to dawaj, słucham...</small></button>
+    </div>
+    <div id="custom-wrap" hidden>
+        <label for="custom">Jaki plan chodzi ci po głowie?</label><textarea id="custom" maxlength="1500" placeholder="Twoja propozycja…"></textarea>
+    </div>
+    <button type="button" class="primary" id="plan-next">Dobra, teraz kiedy?</button><button type="button" class="back" data-back="1">Wróć</button>
+</section>
+
+<section data-step="3" hidden>
+    <h1 tabindex="-1">Kiedy wpisać cię do kalendarza?</h1><p>Brzmi oficjalnie, ale nadal chodzi tylko o spotkanie.</p>
+    <label for="date">Wybierz dzień</label><input type="date" id="date" name="data"><p class="hint" id="date-label" aria-live="polite"></p>
+    <label for="time">O której?</label><input type="time" id="time" name="godzina">
+    <label class="check"><input type="checkbox" id="later">Godzinę dogadamy</label>
+    <button type="button" class="primary" id="date-next">Sprawdźmy ten plan</button><button type="button" class="back" data-back="2">Zmień plan</button>
+</section>
+
+<section data-step="4" hidden>
+    <h1 tabindex="-1">Czyli jesteśmy umówieni… prawie.</h1><p>Jeszcze tylko przekażmy ustalenia drugiej zainteresowanej stronie.</p>
+    <div class="summary" id="summary"></div>
+    <p class="notice">Po kliknięciu twoja propozycja trafi do organizatora. Szczegóły dogadacie już między sobą.</p>
+    <button type="submit" class="primary" id="send">Wyślij do sprawcy zamieszania</button>
+    <button type="button" class="back" id="edit" data-back="3">Chcę coś zmienić</button>
+    <p class="notice" id="demo-note" hidden>Tryb demonstracyjny: wysyłka e-mail nie jest jeszcze podłączona. Możesz obejrzeć podsumowanie, ale nic nie zostanie wysłane.</p>
+</section>
+
+<section data-step="5" hidden>
+    <h1 tabindex="-1">Zgłoszenie przyjęte.</h1>
+    <p>Teraz niech się organizator wykaże.</p><p class="notice">Domyślam się że organizator nie może się doczekać się spotkania.</p>
+</section>
+
+<p class="error" id="error" role="alert" hidden></p>
+</form><div class="footer">Biuro spraw całkiem przyjemnych</div>
+</main>
+
+<script>
+// Później wklej endpoint formularza, np. https://formspree.io/f/TWOJ_ID.
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mljbekjr';
+const $ = id => document.getElementById(id);
+let step=0, plan='', dodges=0, sending=false;
+const sections=[...document.querySelectorAll('[data-step]')];
+function error(message){$('error').textContent=message;$('error').hidden=!message;}
+function go(n){step=n;sections.forEach(s=>s.hidden=Number(s.dataset.step)!==n);document.querySelectorAll('.progress span').forEach((s,i)=>s.classList.toggle('active',i<=n));error('');sections[n].querySelector('h1').focus();}
+function localToday(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+function readableDate(){return new Date($('date').value+'T12:00:00').toLocaleDateString('pl-PL',{weekday:'long',day:'numeric',month:'long',year:'numeric'});}
+function data(){return {imie:$('name').value.trim(),plan:plan==='Inna opcja'?$('custom').value.trim():plan,data:readableDate(),data_iso:$('date').value,godzina:$('later').checked?'Do dogadania':$('time').value};}
+function renderSummary(){const d=data();$('summary').replaceChildren();for(const [label,value] of [['Kto',d.imie],['Plan',d.plan],['Termin',d.data],['Godzina',d.godzina]]){const row=document.createElement('div'),key=document.createElement('small'),val=document.createElement('span');key.textContent=label;val.textContent=value;row.append(key,val);$('summary').append(row);}}
+$('date').min=localToday();
+$('enter').onclick=()=>{if(!$('name').value.trim()){error('Podaj imię, tajemnicza osobo.');$('name').focus();return;}go(1);};
+$('yes').onclick=()=>go(2);
+$('no').onclick=()=>{if(dodges>=3){$('hint').textContent='W takim razie proszę oddać telefon właścicielce.';$('yes').textContent='Dobra, to jednak ja';return;}dodges++;const arena=$('arena'),b=$('no'),yes=$('yes');let positions=[];for(let y=8;y<=arena.clientHeight-b.offsetHeight-8;y+=12){for(let x=8;x<=arena.clientWidth-b.offsetWidth-8;x+=12){const clear=x+b.offsetWidth+8<yes.offsetLeft||x>yes.offsetLeft+yes.offsetWidth+8||y>yes.offsetTop+yes.offsetHeight+8;const moved=Math.hypot(x-b.offsetLeft,y-b.offsetTop)>40;if(clear&&moved)positions.push([x,y]);}}const pos=positions[Math.floor(Math.random()*positions.length)];if(pos){b.style.right='auto';b.style.bottom='auto';b.style.left=pos[0]+'px';b.style.top=pos[1]+'px';}$('hint').textContent=['Podejrzane.','Coraz mniej ci wierzę.','Dobra, chyba wystarczy tej konspiracji.'][dodges-1];};
+document.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{plan=b.dataset.plan;document.querySelectorAll('.choice').forEach(c=>c.setAttribute('aria-pressed',String(c===b)));$('custom-wrap').hidden=plan!=='Inna opcja';error('');if(plan==='Inna opcja')$('custom').focus();});
+$('plan-next').onclick=()=>{if(!plan){error('Najpierw wybierz plan.');return;}if(plan==='Inna opcja'&&!$('custom').value.trim()){error('Zdradź swój pomysł.');$('custom').focus();return;}go(3);};
+$('date').onchange=()=>{$('date-label').textContent=$('date').value?readableDate():'';};
+$('later').onchange=()=>{$('time').disabled=$('later').checked;};
+$('date-next').onclick=()=>{if(!$('date').value||!$('date').validity.valid||$('date').value<localToday()){error('Wybierz dzisiejszą lub przyszłą datę.');return;}if(!$('later').checked&&!$('time').value){error('Wybierz godzinę albo zaznacz, że ją dogadamy.');return;}renderSummary();$('demo-note').hidden=Boolean(FORMSPREE_ENDPOINT);go(4);};
+document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>{if(!sending)go(Number(b.dataset.back));});
+$('invite').addEventListener('submit',async e=>{e.preventDefault();if(step!==4||sending)return;if(!FORMSPREE_ENDPOINT){error('To jeszcze wersja demonstracyjna — nic nie wysłano. Organizator musi podłączyć formularz.');return;}sending=true;error('');$('send').disabled=true;$('edit').disabled=true;$('send').textContent='Przekazuję sprawę organizatorowi…';const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),20000);try{const response=await fetch(FORMSPREE_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({...data(),temat:'Wpłynęła propozycja. Organizatorze, do roboty.'}),signal:controller.signal});if(!response.ok)throw new Error('send');go(5);}catch(err){error(err.name==='AbortError'?'Nie udało się potwierdzić wysyłki. Dane nadal tu są; sprawdź połączenie. Ponowienie może wysłać duplikat.':'Coś nie przeszło. Twój plan nadal tu jest — spróbuj jeszcze raz.');}finally{clearTimeout(timeout);sending=false;$('send').disabled=false;$('edit').disabled=false;$('send').textContent='Wyślij do sprawcy zamieszania';}});
+go(0);
+</script>
+</body>
+</html>
